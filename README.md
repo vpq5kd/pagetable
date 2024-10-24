@@ -24,9 +24,13 @@ size_t translate(size_t va);
 
 void deallocate(size_t va, ptbrOption option);
 ```
-`deallocate()` takes two arguments, `size_t va` and `ptbrOption option`. `size_t va` is a hex value representation of a virtual address (e.g. **0x12345abcdef**). `ptbrOption option` is a `typedef enum` with two options, `FREE_PTBR` or `LEAVE_PTBR`. `deallocate()` iterates through the levels of a virtual address and sets each of their valid bits to zero (effectively eliminating the mapping). Afterwords, it does one of two things. If deallocate is called with the `FREE_PTBR` option, it sets `ptbr = 0`.
+`deallocate()` takes two arguments, `size_t va` and `ptbrOption option`. `size_t va` is a hex value representation of a virtual address (e.g. **0x12345abcdef**). `ptbrOption option` is a `typedef enum` with two options, `FREE_PTBR` or `LEAVE_PTBR`. `deallocate()` iterates through the levels of a virtual address and sets each of their valid bits to zero (effectively eliminating the mapping). Afterwords, it does one of two things. If `deallocate()`is called with the `FREE_PTBR` option, it sets `ptbr = 0`.
 
- ***WARNING: DO NOT CALL DEALLOCATE WITH FREE_PTBR UNLESS YOU HAVE DEALLOCATED ALL PREVIOUSLY ALLOCATED VIRTUAL ADDRESSES.*** 
+ ***WARNING: DO NOT CALL DEALLOCATE WITH FREE_PTBR UNLESS YOU HAVE DEALLOCATED ALL PREVIOUSLY ALLOCATED VIRTUAL ADDRESSES.***
+
+Calling `deallocate()` with `LEAVE_PTBR` does the exact same thing as the prior call, but it leaves the `ptbr` intact. This means that if you have allocated multiple virtual addresses, you will still be able to access their mappings.
+
+ 
 
 
 ## config.h
