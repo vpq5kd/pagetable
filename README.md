@@ -16,7 +16,7 @@ void page_allocate(size_t va);
 
 size_t translate(size_t va);
 ```
-`translate()` takes one argument, `size_t va`, whic his a hex value representation of a virtual address (e.g. **0x12345abcdef**). This virtual address is then translated to a physical address using them save formula as was used to allocate it. If the virtual address is not mapped ***or*** if `size_t ptbr` has not been set, translate will return **0xffffffffffffffff**. Otherwise, it will return a `size_t physical_address` such as **0x561e56a74def**. `translate()` supports multi-level translation. See [config.h](#config.h) for more details.
+`translate()` takes one argument, `size_t va`, which is a hex value representation of a virtual address (e.g. **0x12345abcdef**). This virtual address is then translated to a physical address using them save formula as was used to allocate it. If the virtual address is not mapped ***or*** if `size_t ptbr` has not been set, translate will return **0xffffffffffffffff**. Otherwise, it will return a `size_t physical_address` such as **0x561e56a74def**. `translate()` supports multi-level translation. See [config.h](#config.h) for more details.
  
 ## deallocate()
 ```
@@ -24,7 +24,7 @@ size_t translate(size_t va);
 
 void deallocate(size_t va, ptbrOption option);
 ```
-
+`deallocate()` takes two arguments, `size_t va` and `ptbrOption option`. `size_t va` is a hex value representation of a virtual address (e.g. **0x12345abcdef**). `ptbrOption option` is a `typedef enum` with two options, `FREE_PTBR` or `LEAVE_PTBR`
 ## config.h
 
 ## libmlpt.a
