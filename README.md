@@ -42,5 +42,11 @@ Calling `deallocate()` with `LEAVE_PTBR` does the exact same thing as the prior 
 #define POBITS  12
 ```
 
+config.h is a c header file that defines the number of levels (`LEVELS`)used for page allocation and the amount of offset bits (`POBITS`) in a virtual address. You ***must*** do both of the following:
+
+First, use a text editor of your choice to change the number of levels and offset bits to your desired values.
+
+Next, remake the library as defined by [libmlpt.a](#libmlpt.a). Failure to do this step will result in the API not _actually_ updating the values of these two variables.
+
 
 ## libmlpt.a
