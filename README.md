@@ -5,7 +5,10 @@ MLPT is an API designed for teaching students the ins and outs of page table all
 ## page\_allocate
 ```
 #include "mlpt.h" //for the MLPT API
+
+void page_allocate(size_t va);
 ```
+page\_allocate takes one argument, `size_t va`, which is a hex value representation of a virtual address (e.g. **0x12345abcdef**).
 ## translate
 
 ## deallocate
