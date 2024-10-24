@@ -8,7 +8,7 @@ MLPT is an API designed for teaching students the ins and outs of page table all
 
 void page_allocate(size_t va);
 ```
-page\_allocate takes one argument, `size_t va`, which is a hex value representation of a virtual address (e.g. **0x12345abcdef**). This virtual address is then allocated to a physical address using the regular page allocation formula. If the `size_t ptbr` is not set, it will set it as well. page\_allocate adds mappings on top of a set ptbr, so once the ptbr is set once it cannot be set again unless it is released by [deallocate](#deallocate). page\_allocate supports multi-level allocation. See [config.h](#config.h) for more details.
+`page_allocate()` takes one argument, `size_t va`, which is a hex value representation of a virtual address (e.g. **0x12345abcdef**). This virtual address is then allocated to a physical address using the regular page allocation formula. If the `size_t ptbr` is not set, it will set it as well.`page_allocate()` adds mappings on top of a set ptbr, so once the ptbr is set once it cannot be set again unless it is released by [deallocate](#deallocate). `page_allocate()` supports multi-level allocation. See [config.h](#config.h) for more details.
 
 ## translate
 ```
@@ -16,7 +16,8 @@ page\_allocate takes one argument, `size_t va`, which is a hex value representat
 
 size_t translate(size_t va);
 ```
-
+`translate()` takes one argument, `size_t va`, whic his a hex value representation of a virtual address (e.g. **0x12345abcdef**). This virtual address is then translated to a physical address using them save formula as was used to allocate it. If the virtual address is not mapped ***or*** if `size_t ptbr` has not been set, translate will return **0xffffffff**. Otherwise, it will return a `size_t physical_address` such as **0x561e56a74def**. `translate()` supports multi-level translation. See [config.h](#config.h) for more details.
+ 
 ## deallocate
 
 ## config.h
