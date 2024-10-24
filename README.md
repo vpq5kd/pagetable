@@ -53,4 +53,4 @@ Next, remake the library as defined by [libmlpt.a](#libmlpta). Failure to do thi
 
 libmlpt.a is the static libary produced by the `Makefile` in the github [repository](https://github.com/vpq5kd/pagetable/tree/main?tab=readme-ov-file#libmlpta). To produce this library run the `make` command in the directory where the MLPT API package is located on your machine. If you aren't using a linux shell, refer to the documentation of your particular shell on how to install make. 
 
-To use this library, you must add the following to the linking step at compile time: `-L/path/to/MLPT_API_PACKAGE -lmlpt`. This will appropriately compile the static with the rest of your object files to create your final executable.
+To use this library, you must add the following to the linking step at compile time: `-L/path/to/MLPT_API_PACKAGE -lmlpt`. This will appropriately compile the static library with the rest of your object files to create your final executable.
