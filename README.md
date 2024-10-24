@@ -34,5 +34,13 @@ Calling `deallocate()` with `LEAVE_PTBR` does the exact same thing as the prior 
 
 
 ## config.h
+```
+/** LEVELS = number of PTEs used to translate one address. */
+#define LEVELS  4
+
+/** POBITS = number of bits used for the page offset. */
+#define POBITS  12
+```
+
 
 ## libmlpt.a
