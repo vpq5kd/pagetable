@@ -11,6 +11,11 @@ void page_allocate(size_t va);
 page\_allocate takes one argument, `size_t va`, which is a hex value representation of a virtual address (e.g. **0x12345abcdef**). This virtual address is then allocated to a physical address using the regular page allocation formula. If the `size_t ptbr` is not set, it will set it as well. page\_allocate adds mappings on top of a set ptbr, so once the ptbr is set once it cannot be set again unless it is released by [deallocate](#deallocate). page\_allocate supports multi-level allocation. See [config.h](#config.h) for more details.
 
 ## translate
+```
+#include "mlpt.h" //for the MLPT API
+
+size_t translate(size_t va);
+```
 
 ## deallocate
 
