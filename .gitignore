@@ -1,1 +1,3 @@
 readme_commit.sh
+*.o
+*.a
