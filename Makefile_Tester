@@ -1,0 +1,22 @@
+CCFLAGS = -g -Wall
+LDFLAGS = -lm -L.
+CC = clang
+
+all: mlpt libmlpt.a
+
+mlpt: tester.o libmlpt.a
+	$(CC) $(CCFLAGS) tester.o $(LDFLAGS) -lmlpt -o mlpt
+
+tester.o: tester.c
+	$(CC) $(CCFLAGS) -c tester.c -o tester.o
+
+libmlpt.a: mlpt.o mlpt.h
+	ar -rcs libmlpt.a mlpt.o
+
+mlpt.o: mlpt.c config.h mlpt.h 
+	$(CC) $(CCFLAGS) -c mlpt.c -o mlpt.o
+
+clean:
+	rm -f mlpt.o tester.o libmlpt.a mlpt	
+
+
