@@ -5,18 +5,14 @@
 #include "mlpt.h"
 #include "config.h"
 
-//defined for general use
-#define MSPACE 2
-
 //defined for page_allocate
 #define PTESIZE 8
-#define TSIZE (1 << POBITS) 
-#define ALIGNMENT (1 << POBITS )
+#define PAGE_SIZE (1 << POBITS) 
+#define ALIGNMENT (1 << POBITS)
 
 //defined for translate
-#define OFFSET_MASK ((1UL << POBITS) - 1)
-#define PAGE_SIZE (1 << POBITS)
-#define PAGE_TABLE_ENTRIES (PAGE_SIZE / 8)
+#define OFFSET_MASK (PAGE_SIZE - 1)
+#define PAGE_TABLE_ENTRIES (PAGE_SIZE / PTESIZE)
 
 size_t ptbr = 0;
 
@@ -67,8 +63,8 @@ size_t translate(size_t va){
 }
 void page_allocate(size_t va){
 	if (ptbr == 0){
- 		posix_memalign((void **)&ptbr, ALIGNMENT, TSIZE);		
-		memset((void *)ptbr, 0, TSIZE);	
+ 		posix_memalign((void **)&ptbr, ALIGNMENT, PAGE_SIZE);		
+		memset((void *)ptbr, 0, PAGE_SIZE);	
 	}	
 
 
@@ -82,8 +78,8 @@ void page_allocate(size_t va){
         };
 
         size_t *new_entry;
-       	posix_memalign((void**)&new_entry, ALIGNMENT, TSIZE);
-       	memset(new_entry, 0, TSIZE);
+       	posix_memalign((void**)&new_entry, ALIGNMENT, PAGE_SIZE);
+       	memset(new_entry, 0, PAGE_SIZE);
 
        	pt[vpn] = (size_t)new_entry | (1UL);
 		pt = new_entry;
