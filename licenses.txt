@@ -1,0 +1,5 @@
+GPL: The GNU GPL is an extremely strong license for creating and distributing opensource software. It requires that all derivatives of the original software be completely free and open source, and they also must be licensed under the GNU GPL. I chose this for the MLPT API because I believe that any software designed for educational purposes should not only be guaranteed to be free, but also because I believe any future (i.e. better) versions of it should remain free as well.
+
+MIT: The MIT license is similar to the GNU GPL in the sense that it allows anyone to create a derivative of the original software. However, it also allows them to sell said derivative. Since MLPT API is designed to be an educational tool, everyone should have access to its derivatives regardless of their ability to pay.
+
+Apache 2.0: The Apache 2.0 license is very similar to the MIT license, with a few more addendums for patent rights. While I didn't choose to use it for the same reasons as the MIT license, it is certainly extremely powerful and a good option for many programs.
